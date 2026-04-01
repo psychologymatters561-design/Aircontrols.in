@@ -1434,8 +1434,8 @@ function submitHeroForm(){
   const lead = { name, phone, service: document.getElementById('hf-service')?.value||'Not specified', source:'hero-form-submit', timestamp: new Date().toISOString() };
   saveLead(lead);
   sendToWeb3Forms(lead);
-  sendMailtoNotification(lead);
-  alert(`✅ Thank you, ${name}! Our expert will call you at ${phone} within 2 hours.`);
+  //sendMailtoNotification(lead);
+  alert(`✅ Thank you, ${name}! Our expert will call you at ${phone} now!.`);
   heroLeadFired = true;
 }
 
