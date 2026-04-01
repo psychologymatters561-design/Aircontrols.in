@@ -1461,7 +1461,7 @@ function submitContactForm(){
   const lead = { name:`${fname} ${lname}`.trim(), phone, email, service, facility, location, message, source:'contact-form', timestamp:new Date().toISOString() };
   saveLead(lead);
   sendToWeb3Forms(lead);
-  sendMailtoNotification(lead);
+  //sendMailtoNotification(lead);
   setTimeout(()=>{
     document.getElementById('contactFormBody').style.display='none';
     document.getElementById('cfSuccess').style.display='block';
@@ -1486,7 +1486,7 @@ function saveLead(lead){
    Sign up at web3forms.com → paste your access_key above
    ================================================================ */
 async function sendToWeb3Forms(lead){
-  if(!CFG.web3formsKey || CFG.web3formsKey==='0b3287e6-ba3f-4a09-93ed-2212b40ea680') return;
+  if(!CFG.web3formsKey) return;
   try {
     await fetch('https://api.web3forms.com/submit',{
       method:'POST',
