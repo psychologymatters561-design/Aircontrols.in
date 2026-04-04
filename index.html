@@ -967,72 +967,7 @@ Latest from Our Blog
   </div>
 </footer>
 
-<!-- Chatbot -->
-<div id="chatWidget">
-  <div id="chatHeader">
-    <div class="ch-avatar-wrap">
-      <img src="support-avatar.svg" alt="Support Agent" class="ch-avatar">
-      <div class="ch-badge">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-      </div>  
-    </div>
-    <div>
-      <div id="chHeading">Air Control Support</div>
-      <div id="chSub">We reply immediately</div>
-    </div>
-  </div>
-  <div id="chatContent">
-    <div id="leadSavedBar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-      <span>Got it! Our expert will call you shortly.</span>
-    </div>
-    <div id="chatMsgs">
-      <div class="chat-msg bot">
-        <div class="chat-avatar">
-          <img src="support-avatar.svg" alt="Support Agent">  
-        </div>
-        <div class="chat-bubble">
-          👋 Hey there! How can I assist you today?
-        </div>
-      </div>
-    </div>
-    <div id="chatQRs"></div>
-    <div id="chatInputRow">
-      <div id="chatProgWrap">
-        <div id="chatProg"></div>  
-      </div>
-      <input type="text" id="chatTextInput" placeholder="Type your message..." maxlength="256">
-      <button onclick="sendChatMsg()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="send-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-      </button>
-    </div>
-  </div>
-</div>
-<div id="chatNudge">
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-  <span>How can I help?</span>
-</div>
-<div id="chatBadge" onclick="openChat()">💬</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/web3forms/1.1.3/web3forms.js" integrity="sha512-FqHnRGI1hR/bBBrXFV00hGBI3HGDIyFQG8LECkSc2Pom/q47/6JYCRz+XgOEjgbixLa8lGdPZU8E4F4N9l1S5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-let CFG={
-  w3fkey:'87addf6e-ef27-4dfb-8596-2d443de80d48',
-  chatDelay:3000,
-  adminPassword:'ac2023',
-}
-
-/* Floating chatbot */
-let chatState={
-  open:false, started:false, step:0, data:{},
-  leadFired:false,
-};
-
-const CHAT_FLOW=[
-  {
-    q:'What type of property is this for?',
-    opts:['Factory','Office','Hospital','Data Center','Hotel'],
-    id:'start',
+<    id:'start',
   },
   {
     q:'Thanks! And your name is?',
@@ -1335,22 +1270,194 @@ Lead Source: ${lead.source}
 const pages=['home','why-ac','services','installation','amc','repairs','industries','locations','blog-list','blog-post','contact'];
 let currentPage=null;
 window.addEventListener('hashchange',()=>updatePage());
-updatePage(true);
-function updatePage(init=false){
-const h=location.hash.slice(1).toLowerCase();
-navigate(pages.includes(h) ? h : 'home', !init);
+    <li><a data-page="home" onclick="navigate('home')">Home</a></li>
+    <li><a data-page="why" onclick="navigate('why')">Why Air Control</a></li>
+    <li><a data-page="services" onclick="navigate('services')">Services</a></li>
+    <li><a data-page="industries" onclick="navigate('industries')">Industries</a></li>
+    <li><a data-page="contact" onclick="navigate('contact')">Contact</a></li>
+  </ul>
+  <button class="nav-cta-btn" onclick="openChatbot()">📞 Consult Expert</button>
+  <div class="hamburger" onclick="toggleMobileNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a onclick="navigate('home');toggleMobileNav()">Home</a>
+  <a onclick="navigate('why');toggleMobileNav()">Why Air Control</a>
+  <a onclick="navigate('services');toggleMobileNav()">Services</a>
+  <a onclick="navigate('industries');toggleMobileNav()">Industries</a>
+  <a onclick="navigate('contact');toggleMobileNav()">Reviews & Contact</a>
+  <a onclick="openChatbot();toggleMobileNav()" style="color:var(--gold);font-weight:600;">📞 Consult Expert →</a>
+</div>
+     
+function showChatStep(idx){
+  const step = CHAT_FLOW[idx];
+  if(!step) return;
+  setProgress(Math.round((idx/CHAT_FLOW.length)*100));
+  typingThen(()=>{
+    let msg = step.bot.replace(/\[NAME\]/g, chatState.data.name?.split(' ')[0]||'there');
+    addBotMsg(msg);
+    if(step.waitQR) showQRs(step.qr);
+    else if(step.input) showInput(step.optional);
+  });
 }
-function navigate(page,addToHistory=true){
-if(currentPage) document.getElementById(currentPage).classList.remove('active');
-document.getElementById(page).classList.add('active');
-currentPage=page;
-window.scrollTo(0,0);
-if(addToHistory) history.pushState(null,'','#'+page);
-else history.replaceState(null,'','#'+page);
+
+function typingThen(cb){
+  const msgs = document.getElementById('chatMsgs');
+  const t = document.createElement('div');
+  t.className='typing-dots';
+  t.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{ t.remove(); cb(); }, 850+Math.random()*350);
 }
-/* Reveal animations */
-const ro=new IntersectionObserver(els=>{[...els].forEach(el=>el.isIntersecting ? el.target.classList.add('visible') : el.target.classList.remove('visible'))});
-[...document.querySelectorAll('.reveal')].forEach(el=>ro.observe(el));
+
+function addBotMsg(text){
+  const msgs = document.getElementById('chatMsgs');
+  const d=document.createElement('div'); d.className='chat-msg bot';
+  const b=document.createElement('div'); b.className='chat-bubble';
+  b.innerHTML=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  d.appendChild(b); msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
+}
+
+function addUserMsg(text){
+  const msgs=document.getElementById('chatMsgs');
+  const d=document.createElement('div'); d.className='chat-msg user';
+  const b=document.createElement('div'); b.className='chat-bubble';
+  b.textContent=text;
+  d.appendChild(b); msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
+}
+
+function showQRs(opts){
+  const qr=document.getElementById('chatQRs');
+  document.getElementById('chatInputRow').style.display='none';
+  qr.innerHTML='';
+  opts.forEach(o=>{ const btn=document.createElement('button'); btn.className='chat-qr'; btn.textContent=o; btn.onclick=()=>handleQR(o); qr.appendChild(btn); });
+}
+
+function showInput(optional=false){
+  document.getElementById('chatInputRow').style.display='flex';
+  document.getElementById('chatQRs').innerHTML='';
+  const inp=document.getElementById('chatTextInput');
+  inp.placeholder=optional ? 'Type or press Send to skip...' : 'Type your answer...';
+  inp.value=''; inp.focus();
+}
+
+function handleQR(val){
+  document.getElementById('chatQRs').innerHTML='';
+  addUserMsg(val);
+  processChat(val);
+}
+
+function sendChatMsg(){
+  const inp=document.getElementById('chatTextInput');
+  const val=inp.value.trim();
+  const step=CHAT_FLOW[chatState.step];
+  if(!val && !step?.optional) return;
+  inp.value='';
+  addUserMsg(val||'—');
+  processChat(val||'');
+}
+
+function processChat(val){
+  const step=CHAT_FLOW[chatState.step];
+  if(step.id==='start') chatState.data.propertyType=val;
+  else if(step.id==='name') chatState.data.name=val;
+  else if(step.id==='phone'){
+    chatState.data.phone=val;
+    // 🔥 INSTANT LEAD FIRED as soon as name + phone captured
+    if(!chatState.leadFired && chatState.data.name && val.replace(/\D/g,'').length>=10){
+      chatState.leadFired=true;
+      const instantLead={ name:chatState.data.name, phone:val, propertyType:chatState.data.propertyType, source:'chatbot-instant', timestamp:new Date().toISOString() };
+      saveLead(instantLead);
+      sendToWeb3Forms(instantLead);
+      sendMailtoNotification(instantLead);
+      // Show green confirmation bar
+      const bar=document.getElementById('leadSavedBar');
+      bar.style.display='flex';
+      setTimeout(()=>bar.style.display='none', 5000);
+    }
+  }
+  else if(step.id==='service') chatState.data.service=val;
+  else if(step.id==='email') chatState.data.email=val;
+  else if(step.id==='detail') chatState.data.message=val;
+
+  chatState.step++;
+  if(chatState.step>=CHAT_FLOW.length) completeChatFlow();
+  else showChatStep(chatState.step);
+}
+
+function completeChatFlow(){
+  setProgress(100);
+  document.getElementById('chatInputRow').style.display='none';
+  document.getElementById('chatQRs').innerHTML='';
+  const n=chatState.data.name?.split(' ')[0]||'there';
+  const phone=chatState.data.phone||'—';
+  // Save full lead
+  const fullLead={...chatState.data, source:'chatbot-complete', timestamp:new Date().toISOString()};
+  saveLead(fullLead);
+  sendToWeb3Forms(fullLead);
+  typingThen(()=>{
+    addBotMsg(`🎉 Thank you, **${n}**! You've made a smart decision.\n\n✅ Our senior engineer will call you at **${phone}** within 2 hours\n✅ Free HVAC Safety Checklist sent to your email\n✅ No obligation — just honest expert advice\n\nFor immediate assistance:\n📞 **+91 93122 64832**\n📧 ajay@aircontrols.in`);
+  });
+}
+
+function setProgress(pct){ document.getElementById('chatProg').style.width=pct+'%'; }
+
+// Show nudge after 14 seconds
+setTimeout(()=>{
+  if(!chatState.open && !chatState.started){
+    document.getElementById('chatNudge').style.display='block';
+    document.getElementById('chatBadge').style.display='flex';
+  }
+}, 14000);
+
+/* ================================================================
+   ADMIN PANEL — visit #admin with password to view/download leads
+   ================================================================ */
+window.addEventListener('hashchange',()=>{ if(location.hash==='#admin') openAdmin(); });
+function openAdmin(){
+  const pw=prompt('Enter admin password:');
+  if(pw!==CFG.adminPassword){ history.replaceState(null,'','#home'); navigate('home',false); return; }
+  const leads=JSON.parse(localStorage.getItem('ac_leads_v2')||'[]');
+  const win=window.open('','_blank');
+  if(!win) return;
+  win.document.write(`<!DOCTYPE html><html><head><title>Air Control — Leads Dashboard</title>
+  <style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'DM Sans',sans-serif;background:#060e1a;color:#f8f6f1;padding:36px;min-height:100vh;}
+  h2{font-family:Georgia,serif;font-size:1.8rem;color:#c8a84b;margin-bottom:6px;}
+  .sub{color:rgba(255,255,255,.4);font-size:.85rem;margin-bottom:24px;}
+  .actions{display:flex;gap:12px;margin-bottom:28px;}
+  button{background:#1e4db7;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:.9rem;cursor:pointer;font-family:inherit;}
+  button:hover{background:#4a90d9;}
+  .danger{background:#c0392b !important;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;}
+  th{background:rgba(200,168,75,.15);color:#c8a84b;padding:12px 14px;text-align:left;font-weight:600;border-bottom:1px solid rgba(255,255,255,.08);}
+  td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.7);vertical-align:top;}
+  tr:hover td{background:rgba(255,255,255,.03);}
+  .empty{text-align:center;padding:48px;color:rgba(255,255,255,.3);}
+  .badge{background:rgba(30,77,183,.25);color:#4a90d9;padding:2px 8px;border-radius:4px;font-size:.75rem;}
+  </style></head><body>
+  <h2>🔒 Air Control — Leads Dashboard</h2>
+  <div class="sub">${leads.length} total lead${leads.length!==1?'s':''} collected · Sorted newest first</div>
+  <div class="actions">
+    <button onclick="dlCSV()">⬇ Download CSV</button>
+    <button onclick="location.reload()">🔄 Refresh</button>
+    <button class="danger" onclick="if(confirm('Clear ALL leads? This cannot be undone.')){localStorage.removeItem('ac_leads_v2');location.reload();}">🗑 Clear All</button>
+  </div>`);
+  if(leads.length===0){
+    win.document.write('<div class="empty">No leads yet. They will appear here as visitors engage with the chatbot and contact form.</div>');
+  } else {
+    const sorted=[...leads].reverse();
+    win.document.write('<table><tr><th>#</th><th>Time</th><th>Name</th><th>Phone</th><th>Email</th><th>Service</th><th>Facility</th><th>Location</th><th>Source</th><th>Message</th></tr>');
+    sorted.forEach((l,i)=>{
+      win.document.write(`<tr><td>${sorted.length-i}</td><td style="white-space:nowrap;font-size:.75rem;">${l.timestamp?new Date(l.timestamp).toLocaleString('en-IN'):''}</td><td><strong>${l.name||'—'}</strong></td><td style="color:#4a90d9;white-space:nowrap;"><a href="tel:${(l.phone||'').replace(/\s/g,'')}" style="color:#4a90d9;">${l.phone||'—'}</a></td><td style="font-size:.76rem;">${l.email||'—'}</td><td>${l.service||l.requirement||'—'}</td><td>${l.facility||l.propertyType||'—'}</td><td>${l.location||'—'}</td><td><span class="badge">${l.source||'—'}</span></td><td style="max-width:200px;font-size:.76rem;">${l.message||'—'}</td></tr>`);
+    });
+    win.document.write('</table>');
+  }
+  const ld=JSON.stringify(leads);
+  win.document.write(`<script>const LD=${ld};function dlCSV(){const h=['ID','Time','Name','Phone','Email','Service','Facility','Location','PropertyType','Message','Source'];const rows=LD.map((l,i)=>[i+1,l.timestamp,l.name,l.phone,l.email,l.service||l.requirement,l.facility||l.propertyType,l.location,l.propertyType,l.message,l.source].map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(','));const csv=[h.join(','),...rows].join('\\n');const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='aircontrol-leads-'+new Date().toISOString().slice(0,10)+'.csv';a.click();}<\/script></body></html>`);
+  win.document.close();
+}
+
 /* ================================================================
    PROCESS RAIL INTERACTION
    ================================================================ */
@@ -1368,5 +1475,3 @@ setTimeout(initReveal, 120);
 </script>
 </body>
 </html>
-
-
