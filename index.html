@@ -30,7 +30,24 @@ HVAC Services India
 
 <!-- ================= GLOBAL STYLE ================= -->
 <style>
+/* Collapsible content */
 
+.expand-btn{
+  margin-top:15px;
+  color:var(--gold);
+  cursor:pointer;
+  font-weight:600;
+}
+
+.expand-content{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.6s ease;
+}
+
+.expand-content.active{
+  max-height:2000px;
+}
 /* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -300,7 +317,11 @@ ADVANCED HVAC SERVICES (DETAILED EXPANSION)
 Air Control delivers high-performance HVAC solutions engineered for commercial, industrial, and mission-critical environments.
 Our team includes experienced HVAC engineers and technicians who have worked on high-stakes projects where system failure is not an option.
 </p>
-
+<div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
 <!-- HVAC INSTALLATION -->
 
 <h3 style="margin-top:40px;">HVAC Installation (Commercial & Industrial)</h3>
@@ -323,7 +344,11 @@ This ensures that the HVAC system performs efficiently even in high-demand envir
 <p>
 We have experience handling large-scale HVAC installations for industrial plants, commercial complexes, and critical infrastructure projects across Delhi NCR including Gurgaon, Noida, and Faridabad.
 </p>
-
+<div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
 <!-- HVAC AMC -->
 
 <h3 style="margin-top:40px;">HVAC AMC (Annual Maintenance Contracts)</h3>
@@ -338,7 +363,11 @@ We provide both comprehensive and non-comprehensive AMC plans.
 Comprehensive AMC includes parts replacement, emergency support, and complete system coverage,
 while non-comprehensive AMC focuses on periodic maintenance and inspection.
 </p>
-
+<div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
 <p>
 Our AMC services include:
 </p>
@@ -355,7 +384,11 @@ Our AMC services include:
 Regular HVAC maintenance reduces energy consumption, prevents breakdowns,
 and ensures uninterrupted operations for commercial and industrial clients.
 </p>
-
+<div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
 <!-- HVAC REPAIR -->
 
 <h3 style="margin-top:40px;">HVAC Repair & Troubleshooting</h3>
@@ -375,7 +408,11 @@ which is why we prioritize fast response and reliable solutions.
 Emergency HVAC repair services are available across Delhi NCR,
 ensuring that critical systems are restored with minimal delay.
 </p>
-
+<div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
 <!-- INDUSTRY APPLICATION -->
 
 <h3 style="margin-top:40px;">Industry-Specific HVAC Solutions</h3>
@@ -388,6 +425,11 @@ We design and implement solutions tailored to specific operational needs.
 <ul style="line-height:1.8;">
 <li><strong>Factories:</strong> High-capacity ventilation and cooling systems for heat-intensive environments</li>
 <li><
+  <div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>    
 </div>
 
 </section>
@@ -526,6 +568,11 @@ DETAILED HVAC SERVICES (SEO CORE)
       Our services are designed for commercial, industrial, and institutional environments where performance,
       safety, and efficiency are critical.
     </p>
+    <div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
   </div>
 
   <div style="margin-top:40px;" class="grid">
@@ -536,6 +583,11 @@ DETAILED HVAC SERVICES (SEO CORE)
         We design and install advanced HVAC systems including VRF, chillers, and central air conditioning systems.
         Every installation is engineered based on load calculations, airflow optimization, and energy efficiency.
       </p>
+      <div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
     </div>
 
     <div class="card reveal">
@@ -544,6 +596,11 @@ DETAILED HVAC SERVICES (SEO CORE)
         Our HVAC AMC services ensure long-term system reliability. Preventive maintenance, inspections,
         and system optimization reduce downtime and operational costs significantly.
       </p>
+      <div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
     </div>
 
     <div class="card reveal">
@@ -553,9 +610,7 @@ DETAILED HVAC SERVICES (SEO CORE)
         to ensure minimal disruption and maximum efficiency.
       </p>
     </div>
-
-  </div>
-
+</div>
 </div>
 
 </section>
@@ -676,7 +731,7 @@ FAQ SECTION (SEO BOOST)
     <div class="card reveal">
       <h3>What is the cost of HVAC AMC in Delhi NCR?</h3>
       <p>
-        The cost depends on system size and type, generally ranging from ₹500 to ₹1500 per ton.
+        The cost depends on system size and type.
       </p>
     </div>
 
@@ -731,7 +786,11 @@ HVAC AMC PAGE (MONEY PAGE)
       <h3>Systems Covered</h3>
       <p>VRF, chillers, central AC, AHU, and ducting systems.</p>
     </div>
-
+<div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
   </div>
 
 </div>
@@ -771,7 +830,11 @@ HVAC INSTALLATION PAGE
       <h3>New Construction Projects</h3>
       <p>End-to-end HVAC planning and execution.</p>
     </div>
-
+<div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
   </div>
 
 </div>
@@ -810,7 +873,11 @@ HVAC REPAIR PAGE
       <h3>Performance Optimization</h3>
       <p>Enhancing system efficiency and lifespan.</p>
     </div>
-
+<div class="expand-btn" onclick="toggleContent(this)">
+Read Full Details ↓
+    </div>
+    <div class="expand-content">
+    </div>
   </div>
 
 </div>
