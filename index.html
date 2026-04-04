@@ -7,84 +7,168 @@
 
 <title>Air Control | HVAC Experts Delhi NCR</title>
 
-<meta name="description" content="Premium HVAC solutions in Delhi NCR">
+<meta name="description" content="Premium HVAC installation, AMC, and repair services in Delhi NCR. 20+ years experience.">
+
+<!-- SEO BASE -->
+<meta name="keywords" content="HVAC Delhi NCR, AC Services Delhi, HVAC AMC, HVAC Installation, Air Conditioning Delhi">
 
 <!-- FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* ===== RESET ===== */
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+/* ==============================
+GLOBAL RESET
+============================== */
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
+body{
   font-family:'Inter',sans-serif;
   background:#0a1628;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== VARIABLES ===== */
-:root {
+/* ==============================
+VARIABLES
+============================== */
+:root{
   --navy:#0a1628;
+  --navy-dark:#060e1a;
   --gold:#c8a84b;
+  --royal:#1e4db7;
   --light:#eef2f8;
 }
 
-/* ===== CONTAINER ===== */
-.container {
+/* ==============================
+LAYOUT
+============================== */
+.container{
   max-width:1200px;
   margin:auto;
   padding:0 20px;
 }
 
-/* ===== NAV ===== */
-.nav {
+.section{
+  padding:100px 0;
+}
+
+.text-center{
+  text-align:center;
+}
+
+/* ==============================
+TYPOGRAPHY
+============================== */
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+}
+
+.headline{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.lead{
+  color:#aaa;
+  line-height:1.7;
+}
+
+/* ==============================
+BUTTONS
+============================== */
+.btn{
+  padding:14px 26px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:#000;
+}
+
+.btn-outline{
+  border:1px solid var(--gold);
+  color:var(--gold);
+  background:transparent;
+}
+
+/* ==============================
+NAVIGATION
+============================== */
+.nav{
   position:fixed;
   top:0;
   width:100%;
-  background:#060e1a;
+  background:rgba(6,14,26,0.95);
   padding:20px 40px;
   display:flex;
   justify-content:space-between;
   z-index:1000;
 }
 
-.nav a {
-  margin:0 10px;
+.nav a{
+  margin:0 12px;
   cursor:pointer;
 }
 
-/* ===== HERO ===== */
-.hero {
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+/* ==============================
+GRID
+============================== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card{
+  background:#1e2a44;
+  padding:30px;
+  border-radius:12px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+/* ==============================
+CHATBOT BASE
+============================== */
+.chat{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:320px;
+  background:#fff;
+  color:#000;
+  display:none;
   flex-direction:column;
+  border-radius:12px;
+  overflow:hidden;
 }
 
-.hero h1 {
-  font-size:60px;
-  font-family:'Playfair Display',serif;
+.chat-header{
+  background:#000;
+  color:#fff;
+  padding:10px;
 }
 
-.hero button {
-  margin-top:20px;
-  padding:12px 20px;
-  background:var(--gold);
-  border:none;
-  cursor:pointer;
+.chat-messages{
+  height:220px;
+  overflow:auto;
+  padding:10px;
 }
 
-/* ===== SECTION ===== */
-.section {
-  padding:100px 0;
+.chat-input{
+  display:flex;
+}
+
+.chat-input input{
+  flex:1;
+  padding:8px;
 }
 
 </style>
@@ -101,27 +185,21 @@ body {
     <a onclick="scrollToSection('services')">Services</a>
     <a onclick="scrollToSection('contact')">Contact</a>
   </div>
+  <button class="btn btn-gold" onclick="openChat()">Consult</button>
 </div>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <h1>Precision HVAC Engineering</h1>
-  <p>20+ Years • 500+ Projects</p>
-  <button onclick="openChat()">Get Consultation</button>
-</section>
+<!-- MAIN CONTENT STARTS BELOW -->
 
-<!-- SERVICES (placeholder) -->
-<section id="services" class="section container">
-  <h2>Services Coming</h2>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section container">
-  <h2>Contact</h2>
-</section>
 
 <!-- CHATBOT -->
-<div id="chatWidget" style="display:none;"></div>
+<div id="chatWidget" class="chat">
+  <div class="chat-header">HVAC Assistant <span onclick="closeChat()">✕</span></div>
+  <div id="chatMsgs" class="chat-messages"></div>
+  <div class="chat-input">
+    <input id="chatInput">
+    <button onclick="sendMsg()">Send</button>
+  </div>
+</div>
 
 <script>
 
@@ -130,9 +208,30 @@ function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
-/* CHAT PLACEHOLDER */
+/* CHATBOT */
 function openChat(){
-  alert("Chat will open soon");
+  document.getElementById("chatWidget").style.display="flex";
+}
+function closeChat(){
+  document.getElementById("chatWidget").style.display="none";
+}
+
+function sendMsg(){
+  const input=document.getElementById("chatInput");
+  const text=input.value.trim();
+  if(!text) return;
+
+  addUser(text);
+  input.value="";
+
+  setTimeout(()=>addBot("Our expert will contact you shortly."),500);
+}
+
+function addBot(t){
+  document.getElementById("chatMsgs").innerHTML+=`<div><b>Bot:</b> ${t}</div>`;
+}
+function addUser(t){
+  document.getElementById("chatMsgs").innerHTML+=`<div><b>You:</b> ${t}</div>`;
 }
 
 </script>
