@@ -1956,8 +1956,8 @@ document.querySelectorAll('.ps-step').forEach((s,i)=>{
    ================================================================ */
 setTimeout(initReveal, 120);
 
-/* ===============================
-   ADVANCED CHATBOT LEAD SYSTEM
+   /* ===============================
+   COMPLETE CHATBOT ENGINE (FINAL)
    =============================== */
 
 let leadData = {
@@ -1968,27 +1968,6 @@ let leadData = {
   location: "",
   stage: 0
 };
-
-function addBotMessage(text){
-  const chat = document.querySelector(".chat-messages-wrap");
-  if(!chat) return;
-
-  const msg = document.createElement("div");
-  msg.className = "chat-msg bot";
-  msg.innerHTML = `<div class="chat-bubble">${text}</div>`;
-  chat.appendChild(msg);
-  chat.scrollTop = chat.scrollHeight;
-}
-
-function addUserMessage(text){
-  const chat = document.querySelector(".chat-messages-wrap");
-  if(!chat) return;
-
-  const msg = document.createElement("div");
-  msg.className = "chat-msg user";
-  msg.innerHTML = `<div class="chat-bubble">${text}</div>`;
-  chat.appendChild(msg);
-}
 
 function handleChatInput(input){
   addUserMessage(input);
@@ -2004,62 +1983,50 @@ function handleChatInput(input){
     case 1:
       leadData.phone = input;
       leadData.stage = 2;
+
       addBotMessage("What do you need help with?");
-updateOptions([
-  "AC Repair",
-  "AC Servicing",
-  "Installation",
-  "AMC",
-  "Not sure"
-]);
+      updateOptions([
+        "AC Repair",
+        "AC Servicing",
+        "AC Installation",
+        "AMC",
+        "Not sure"
+      ]);
+      break;
+
     case 2:
-  leadData.service = input;
+      leadData.service = input;
+      leadData.stage = 3;
 
-  // 🔥 HIGH VALUE SERVICE BOOST
-  if(input.toLowerCase().includes("repair")){
-    addBotMessage("Got it. AC repair issues can worsen quickly if delayed.");
-  }
-
-  leadData.stage = 3;
-
-  addBotMessage("How urgent is your requirement?");
-  updateOptions([
-    "Immediate (Today)",
-    "Within 24 hours",
-    "This week"
-  ]);
-
-  break;
+      addBotMessage("How urgent is your requirement?");
+      updateOptions([
+        "Immediate (Today)",
+        "Within 24 hours",
+        "This week"
+      ]);
+      break;
 
     case 3:
-  leadData.urgency = input;
+      leadData.urgency = input;
 
-  // 🔥 HIGH INTENT DETECTED
-  if(input.toLowerCase().includes("immediate") || input === "1"){
-    
-    addBotMessage("⚡ This looks urgent. You can connect instantly:");
+      // 🔥 HIGH INTENT TRIGGER
+      if(input.toLowerCase().includes("immediate")){
+        addBotMessage("⚡ This looks urgent. Connect instantly:");
+        showInstantActions();
+      }
 
-    showInstantActions(); // 👈 NEW FUNCTION
+      leadData.stage = 4;
+      addBotMessage("Which area are you located in?");
+      break;
 
-    leadData.stage = 4;
-    addBotMessage("Also, tell me your location so we assign nearest engineer.");
-  }
-  else{
-    leadData.stage = 4;
-    addBotMessage("Which area are you located in?");
-  }
-
-  break;
     case 4:
       leadData.location = input;
       leadData.stage = 5;
 
       addBotMessage("✅ Perfect. Assigning a senior engineer near you.\n\nYou’ll receive a call shortly.");
 
-      // 🔥 FINAL CONVERSION PUSH
-      showInstantActions();
-
-      sendLeadToWhatsApp();
+      showInstantActions();   // final push
+      sendLeadToWhatsApp();   // auto lead send
       break;
 
     default:
@@ -2068,7 +2035,7 @@ updateOptions([
 }
 
 /* ===============================
-   WHATSAPP LEAD PUSH
+   WHATSAPP AUTO LEAD PUSH
    =============================== */
 function sendLeadToWhatsApp(){
   const msg =
@@ -2094,7 +2061,7 @@ function chatSend(){
 }
 
 /* ===============================
-   OPTIONS UI (BUTTON SYSTEM)
+   OPTIONS UI SYSTEM
    =============================== */
 function updateOptions(options){
   const box = document.getElementById("chatOptions");
@@ -2120,7 +2087,7 @@ function selectOption(value){
 }
 
 /* ===============================
-   HIGH INTENT ACTIONS (CALL + WA)
+   INSTANT ACTIONS (HIGH CONVERSION)
    =============================== */
 function showInstantActions(){
   const chat = document.querySelector(".chat-messages-wrap");
@@ -2141,7 +2108,6 @@ function showInstantActions(){
       font-size:13px;
       font-weight:600;
       text-decoration:none;
-      display:inline-block;
     ">📞 Call Now</a>
 
     <a href="https://wa.me/919312264832?text=Hi%2C%20I%20need%20AC%20service%20urgently" target="_blank" style="
@@ -2152,7 +2118,6 @@ function showInstantActions(){
       font-size:13px;
       font-weight:600;
       text-decoration:none;
-      display:inline-block;
     ">💬 WhatsApp</a>
   `;
 
