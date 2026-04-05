@@ -190,37 +190,19 @@ body::before{
   100%{transform:translate(200px,200px);}
 }
 
-/* ================= WHATSAPP FAB ================= */
-#waFab{position:fixed;bottom:28px;left:28px;z-index:9900;display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
-.wa-fab-btn{width:60px;height:60px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,.45);position:relative;transition:all .3s;text-decoration:none;}
-.wa-fab-btn:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,.6);}
-.wa-fab-btn::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(37,211,102,.3);animation:waRipple 2.5s infinite;}
-@keyframes waRipple{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:0}}
-.wa-fab-btn svg{width:30px;height:30px;fill:white;}
-.wa-nudge{background:#fff;color:#0a1628;padding:9px 15px;border-radius:10px 10px 10px 0;font-size:13px;font-weight:500;box-shadow:0 4px 20px rgba(0,0,0,.2);white-space:nowrap;}
-
-/* ================= CHATBOT ================= */
-#chatLauncher{position:fixed;bottom:28px;right:28px;z-index:9900;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
-.chat-nudge{background:#fff;color:#0a1628;padding:9px 15px;border-radius:10px 10px 0 10px;font-size:13px;font-weight:500;box-shadow:0 4px 20px rgba(0,0,0,.2);}
-.chat-fab{width:60px;height:60px;background:linear-gradient(135deg,var(--royal),#4a90d9);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(30,77,183,.5);position:relative;transition:all .3s;font-size:24px;}
-.chat-fab:hover{transform:scale(1.1);}
-.chat-fab::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(30,77,183,.3);animation:waRipple 2.5s infinite;}
-.chat-badge{position:absolute;top:2px;right:2px;width:16px;height:16px;background:#e74c3c;border-radius:50%;border:2px solid #fff;font-size:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;}
-.chatbot-win{position:fixed;bottom:100px;right:28px;z-index:9901;width:360px;max-height:520px;background:#fff;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.28);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.96);pointer-events:none;transition:all .35s cubic-bezier(.16,1,.3,1);}
+/* ================= CHATBOT WINDOW ================= */
+.chatbot-win{position:fixed;bottom:100px;right:28px;z-index:99998;width:360px;max-height:520px;background:#fff;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.28);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.96);pointer-events:none;transition:all .35s cubic-bezier(.16,1,.3,1);}
 .chatbot-win.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}
 .ch-header{background:linear-gradient(135deg,#0a1628,#1a3a6b);padding:16px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.ch-avatar{width:38px;height:38px;background:linear-gradient(135deg,var(--royal),#4a90d9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;border:2px solid rgba(255,255,255,.2);flex-shrink:0;}
+.ch-avatar{width:38px;height:38px;background:linear-gradient(135deg,#1e4db7,#4a90d9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;border:2px solid rgba(255,255,255,.2);flex-shrink:0;}
 .ch-name{font-size:14px;font-weight:700;color:#fff;font-family:'Playfair Display',serif;}
 .ch-status{font-size:11px;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:4px;}
-.ch-status-dot{width:6px;height:6px;background:#2ecc71;border-radius:50%;}
-.ch-wa-link{display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:rgba(37,211,102,.15);border-radius:50%;text-decoration:none;flex-shrink:0;margin-left:auto;transition:background .2s;}
-.ch-wa-link:hover{background:rgba(37,211,102,.3);}
-.ch-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:17px;cursor:pointer;padding:4px;margin-left:6px;transition:color .2s;}
+.ch-dot{width:6px;height:6px;background:#2ecc71;border-radius:50%;}
+.ch-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:17px;cursor:pointer;padding:4px;margin-left:auto;transition:color .2s;}
 .ch-close:hover{color:#fff;}
 .ch-progress{height:3px;background:rgba(0,0,0,.08);flex-shrink:0;}
-.ch-prog-bar{height:100%;background:linear-gradient(90deg,var(--gold),#e8c96b);transition:width .5s ease;}
-.ch-lead-saved{background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.2);border-radius:6px;padding:7px 12px;margin:0 14px;font-size:11.5px;color:#2ecc71;font-weight:600;display:none;align-items:center;gap:5px;flex-shrink:0;}
-.ch-lead-saved::before{content:'✓';}
+.ch-prog-bar{height:100%;background:linear-gradient(90deg,#c8a84b,#e8c96b);transition:width .5s ease;}
+.ch-saved{background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.2);border-radius:6px;padding:7px 12px;margin:0 14px 4px;font-size:11.5px;color:#2ecc71;font-weight:600;display:none;align-items:center;gap:5px;flex-shrink:0;}
 .ch-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth;}
 .ch-msgs::-webkit-scrollbar{width:3px;}
 .ch-msgs::-webkit-scrollbar-thumb{background:rgba(0,0,0,.1);border-radius:2px;}
@@ -230,28 +212,23 @@ body::before{
 .ch-msg.user{align-self:flex-end;}
 .ch-bubble{padding:10px 14px;border-radius:16px;font-size:13px;line-height:1.55;color:#0a1628;}
 .ch-msg.bot .ch-bubble{background:#eef2f8;border-radius:3px 16px 16px 16px;border:1px solid rgba(0,0,0,.06);}
-.ch-msg.user .ch-bubble{background:linear-gradient(135deg,var(--royal),#4a90d9);color:#fff;border-radius:16px 3px 16px 16px;}
-.ch-typing{display:flex;gap:4px;padding:10px 14px;background:#eef2f8;border-radius:3px 16px 16px 16px;width:fit-content;}
+.ch-msg.user .ch-bubble{background:linear-gradient(135deg,#1e4db7,#4a90d9);color:#fff;border-radius:16px 3px 16px 16px;}
+.ch-typing{display:flex;gap:4px;padding:10px 14px;background:#eef2f8;border-radius:3px 16px 16px 16px;width:fit-content;align-self:flex-start;}
 .ch-typing span{width:6px;height:6px;background:#9aa3ba;border-radius:50%;animation:typeDot 1.2s infinite;}
 .ch-typing span:nth-child(2){animation-delay:.2s;}
 .ch-typing span:nth-child(3){animation-delay:.4s;}
 @keyframes typeDot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
 .ch-qrs{display:flex;flex-wrap:wrap;gap:6px;padding:8px 14px;border-top:1px solid rgba(0,0,0,.06);flex-shrink:0;}
-.ch-qr{background:#eef2f8;border:1px solid rgba(30,77,183,.15);color:var(--royal);border-radius:100px;padding:6px 13px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;}
-.ch-qr:hover{background:var(--royal);color:#fff;border-color:var(--royal);}
+.ch-qr{background:#eef2f8;border:1px solid rgba(30,77,183,.15);color:#1e4db7;border-radius:100px;padding:6px 13px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;}
+.ch-qr:hover{background:#1e4db7;color:#fff;}
 .ch-input-row{display:flex;gap:7px;padding:10px 12px;border-top:1px solid rgba(0,0,0,.06);flex-shrink:0;}
 .ch-input{flex:1;background:#eef2f8;border:1.5px solid #e2e8f0;border-radius:100px;padding:9px 14px;font-size:13px;color:#0a1628;outline:none;font-family:'Inter',sans-serif;transition:border-color .2s;}
-.ch-input:focus{border-color:var(--royal);}
-.ch-send{width:36px;height:36px;background:linear-gradient(135deg,var(--royal),#4a90d9);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:transform .2s;}
+.ch-input:focus{border-color:#1e4db7;}
+.ch-send{width:36px;height:36px;background:linear-gradient(135deg,#1e4db7,#4a90d9);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:transform .2s;}
 .ch-send:hover{transform:scale(1.1);}
 .ch-send svg{width:15px;height:15px;fill:#fff;}
-.ch-wa-cta{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:9px 16px;border-radius:100px;font-size:12.5px;font-weight:600;text-decoration:none;transition:all .2s;margin-top:4px;}
-.ch-wa-cta:hover{opacity:.9;}
-@media(max-width:600px){
-  .chatbot-win{width:calc(100vw - 28px);right:14px;}
-  #chatLauncher{right:14px;bottom:14px;}
-  #waFab{left:14px;bottom:14px;}
-}
+.ch-wa-cta{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:9px 16px;border-radius:100px;font-size:12.5px;font-weight:600;text-decoration:none;margin-top:6px;}
+@media(max-width:600px){.chatbot-win{width:calc(100vw - 24px);right:12px;}}
 
 </style>
 
@@ -498,12 +475,13 @@ We design and implement solutions tailored to specific operational needs.
 
 <ul style="line-height:1.8;">
 <li><strong>Factories:</strong> High-capacity ventilation and cooling systems for heat-intensive environments</li>
-<li><
-  <div class="expand-btn" onclick="toggleContent(this)">
-Read Full Details ↓
-    </div>
-    <div class="expand-content">
-    </div>    
+<li><strong>Commercial Buildings:</strong> Energy-efficient systems for offices and business centres</li>
+<li><strong>Hospitals:</strong> Precision airflow for sterile and clean environments</li>
+<li><strong>Data Centers:</strong> Continuous temperature control for 24/7 server uptime</li>
+</ul>
+  <div class="expand-btn" onclick="toggleContent(this)">Read Full Details ↓</div>
+  <div class="expand-content">
+  </div>
 </div>
 
 </section>
@@ -561,72 +539,7 @@ CONTACT ANCHOR
 </section>
 
 
-<!-- =========================================================
-ANIMATION + CANVAS JS
-========================================================= -->
-
-<script>
-
-/* SCROLL REVEAL */
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll(){
-  const trigger = window.innerHeight * 0.85;
-
-  reveals.forEach(el=>{
-    const top = el.getBoundingClientRect().top;
-    if(top < trigger){
-      el.classList.add("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-
-
-/* CANVAS ANIMATION */
-
-const canvas = document.getElementById("heroCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<80;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2,
-    dx:(Math.random()-0.5),
-    dy:(Math.random()-0.5)
-  });
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  particles.forEach(p=>{
-    p.x+=p.dx;
-    p.y+=p.dy;
-
-    if(p.x<0||p.x>canvas.width) p.dx*=-1;
-    if(p.y<0||p.y>canvas.height) p.dy*=-1;
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle="rgba(255,255,255,0.5)";
-    ctx.fill();
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-
-</script>
+<!-- Canvas + Scroll Reveal handled by main script below -->
 <!-- =========================================================
 DETAILED HVAC SERVICES (SEO CORE)
 ========================================================= -->
@@ -1092,6 +1005,44 @@ function sanitize(str){
   d.appendChild(document.createTextNode(String(str||'')));
   return d.innerHTML;
 }
+
+/* ================================================================
+   EXPAND / COLLAPSE sections
+   ================================================================ */
+function toggleContent(btn){
+  const content=btn.nextElementSibling;
+  if(!content) return;
+  const open=content.classList.toggle('active');
+  btn.textContent=open?'Show Less ↑':'Read Full Details ↓';
+}
+
+/* ================================================================
+   HERO CANVAS PARTICLE ANIMATION
+   ================================================================ */
+function initCanvas(){
+  const canvas=document.getElementById('heroCanvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  function resize(){ canvas.width=canvas.offsetWidth; canvas.height=canvas.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  const pts=Array.from({length:80},()=>({
+    x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+    r:Math.random()*1.5+0.3, dx:(Math.random()-0.5)*0.6, dy:(Math.random()-0.5)*0.6
+  }));
+  (function draw(){
+    requestAnimationFrame(draw);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pts.forEach(p=>{
+      p.x+=p.dx; p.y+=p.dy;
+      if(p.x<0||p.x>canvas.width) p.dx*=-1;
+      if(p.y<0||p.y>canvas.height) p.dy*=-1;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.45)'; ctx.fill();
+    });
+  })();
+}
+initCanvas();
 
 /* ================================================================
    RATE LIMITING — max 3 leads per 10 minutes per session
@@ -1785,7 +1736,7 @@ Serving Delhi NCR with precision HVAC engineering and unmatched reliability.
     <button class="ch-close" onclick="toggleChat()">✕</button>
   </div>
   <div class="ch-progress"><div class="ch-prog-bar" id="chProgBar" style="width:0%"></div></div>
-  <div class="ch-lead-saved" id="chLeadSaved">Lead saved — our team will call you shortly</div>
+  <div class="ch-saved" id="chLeadSaved">✓ Lead saved — our team will call you shortly</div>
   <div class="ch-msgs" id="chMsgs"></div>
   <div class="ch-qrs" id="chQRs"></div>
   <div class="ch-input-row" id="chInputRow" style="display:none;">
