@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#1a3a6b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c8a84b"/>
+      <stop offset="100%" style="stop-color:#e8c96b"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Gold accent bar -->
+  <rect x="0" y="0" width="8" height="630" fill="url(#gold)"/>
+  <!-- Logo circle -->
+  <circle cx="140" cy="200" r="72" fill="#1e4db7"/>
+  <circle cx="140" cy="200" r="58" fill="#0a1628"/>
+  <text x="140" y="185" text-anchor="middle" fill="#c8a84b" font-size="18" font-family="Georgia,serif" font-weight="bold" letter-spacing="1">AIR</text>
+  <text x="140" y="210" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Georgia,serif" font-weight="bold">CONTROL</text>
+  <path d="M100 225 Q140 242 180 225" stroke="#c8a84b" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Company name -->
+  <text x="232" y="188" fill="#c8a84b" font-size="42" font-family="Georgia,serif" font-weight="bold">Air Control</text>
+  <text x="234" y="224" fill="rgba(255,255,255,0.55)" font-size="20" font-family="Arial,sans-serif" letter-spacing="3">38 YEARS OF EXCELLENCE</text>
+  <!-- Gold rule -->
+  <rect x="80" y="300" width="160" height="3" fill="url(#gold)" rx="2"/>
+  <!-- Headline -->
+  <text x="80" y="370" fill="#ffffff" font-size="52" font-family="Georgia,serif" font-weight="bold">AC Repair &amp; Service</text>
+  <text x="80" y="430" fill="url(#gold)" font-size="52" font-family="Georgia,serif" font-weight="bold">Delhi NCR</text>
+  <!-- Subtext -->
+  <text x="80" y="490" fill="rgba(255,255,255,0.7)" font-size="24" font-family="Arial,sans-serif">Split AC · Window AC · Central AC · VRF · AMC</text>
+  <!-- Phone -->
+  <text x="80" y="550" fill="#c8a84b" font-size="26" font-family="Arial,sans-serif" font-weight="bold">📞 +91 93122 64832 · aircontrols.in</text>
+  <!-- Trust badges -->
+  <rect x="820" y="280" width="300" height="80" rx="12" fill="rgba(200,168,75,0.12)" stroke="rgba(200,168,75,0.3)" stroke-width="1"/>
+  <text x="970" y="315" text-anchor="middle" fill="#c8a84b" font-size="16" font-family="Arial,sans-serif" font-weight="bold">TRUSTED SINCE 1987</text>
+  <text x="970" y="343" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="15" font-family="Arial,sans-serif">15+ Embassies · 150+ Reviews</text>
+  <rect x="820" y="380" width="300" height="80" rx="12" fill="rgba(200,168,75,0.12)" stroke="rgba(200,168,75,0.3)" stroke-width="1"/>
+  <text x="970" y="415" text-anchor="middle" fill="#c8a84b" font-size="16" font-family="Arial,sans-serif" font-weight="bold">⭐ 4.9 / 5.0 RATING</text>
+  <text x="970" y="443" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="15" font-family="Arial,sans-serif">Zero Safety Incidents · 38 Years</text>
+  <rect x="820" y="480" width="300" height="80" rx="12" fill="rgba(200,168,75,0.12)" stroke="rgba(200,168,75,0.3)" stroke-width="1"/>
+  <text x="970" y="515" text-anchor="middle" fill="#c8a84b" font-size="16" font-family="Arial,sans-serif" font-weight="bold">⚡ 2-HOUR RESPONSE</text>
+  <text x="970" y="543" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="15" font-family="Arial,sans-serif">Emergency AC Repair Delhi NCR</text>
+</svg>
