@@ -731,9 +731,9 @@ function render() {
   });
   dpHtml += '</div>';
   dpHtml += '<div>';
-  dpHtml += '<div class="detail-col-label exc">✗ NOT INCLUDED</div>';
+  dpHtml += '<div class="detail-col-label exc">✕ NOT INCLUDED</div>';
   activeTier.excludes.forEach(function(item){
-    dpHtml += '<div class="detail-item"><span class="detail-item-ico" style="color:#f87171">✗</span>'+item+'</div>';
+    dpHtml += '<div class="detail-item"><span class="detail-item-ico" style="color:#f87171">✕</span>'+item+'</div>';
   });
   if(activeTier.ageNote){
     dpHtml += '<div class="detail-note">&#9888; '+activeTier.ageNote+'</div>';
