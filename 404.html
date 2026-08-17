@@ -22,7 +22,7 @@
 .err-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px}
 .err-content{position:relative;z-index:1;max-width:620px}
 .err-code{font-family:'Playfair Display',serif;font-size:clamp(80px,15vw,160px);font-weight:900;color:rgba(255,255,255,.06);line-height:1;margin-bottom:-20px;display:block;letter-spacing:-.04em}
-.err-icon{font-size:64px;display:block;margin-bottom:20px}
+.err-icon{display:block;margin-bottom:20px;color:#c9a84c}.err-icon svg{margin:0 auto}
 .err-title{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,42px);font-weight:900;color:var(--white);margin-bottom:16px;line-height:1.15}
 .err-title em{font-style:normal;color:var(--gold)}
 .err-sub{font-size:clamp(15px,2vw,17px);color:rgba(255,255,255,.55);line-height:1.72;margin-bottom:40px;font-weight:300}
@@ -30,7 +30,7 @@
 .err-links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:500px;margin:0 auto}
 .err-link-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--r14);padding:18px 20px;text-align:left;transition:all .25s;text-decoration:none;display:block}
 .err-link-card:hover{background:rgba(200,168,75,.08);border-color:rgba(200,168,75,.25);transform:translateY(-2px)}
-.err-link-icon{font-size:22px;margin-bottom:8px;display:block}
+.err-link-icon{margin-bottom:8px;display:block;color:#c9a84c}
 .err-link-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
 .err-link-sub{font-size:12px;color:rgba(255,255,255,.4);line-height:1.4}
 .err-help{margin-top:40px;font-size:13px;color:rgba(255,255,255,.35)}
@@ -71,10 +71,11 @@
         <li><a href="/#contact">Faridabad</a></li>
       </ul>
     </li>
+    <li><a href="/calculator">AMC Calculator</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a href="tel:+919312264832" class="nav-cta-btn">📞 Call Now</a>
+    <a href="tel:+919312264832" class="nav-cta-btn">Call Now</a>
     <div class="hamburger" onclick="toggleMobileNav()" id="hamburger"><span></span><span></span><span></span></div>
   </div>
 </nav>
@@ -94,39 +95,40 @@
     <a href="/#contact">Noida</a>
     <a href="/#contact">Faridabad</a>
   </div>
+  <a href="/calculator">AMC Calculator</a>
   <a href="/#contact">Contact</a>
-  <a class="mob-cta" href="tel:+919312264832">📞 Call +91 93122 64832 →</a>
+  <a class="mob-cta" href="tel:+919312264832">Call +91 93122 64832 →</a>
 </div>
 
 <div class="err-page">
   <div class="err-grid"></div>
   <div class="err-content">
     <span class="err-code">404</span>
-    <span class="err-icon">❄️</span>
+    <span class="err-icon"><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 2v20M4.93 6l14.14 12M19.07 6 4.93 18"/></svg></span>
     <h1 class="err-title">Page Not Found —<br>But Your <em>AC Problem</em> Is</h1>
     <p class="err-sub">The page you're looking for doesn't exist.<br>Let us help you find what you need — or just call us directly.</p>
     <div class="err-btns">
-      <a href="tel:+919312264832" class="btn btn-gold btn-lg">📞 Call +91 93122 64832</a>
+      <a href="tel:+919312264832" class="btn btn-gold btn-lg">Call +91 93122 64832</a>
       <a href="/" class="btn btn-navy btn-lg">← Back to Home</a>
     </div>
     <div class="err-links">
       <a href="/#services" class="err-link-card">
-        <span class="err-link-icon">🔧</span>
+        <span class="err-link-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
         <div class="err-link-title">AC Repair</div>
         <div class="err-link-sub">Not cooling, noises, gas leak, PCB — same-day fix</div>
       </a>
       <a href="/#services" class="err-link-card">
-        <span class="err-link-icon">🧹</span>
+        <span class="err-link-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
         <div class="err-link-title">AC Service &amp; Cleaning</div>
         <div class="err-link-sub">Deep wash, gas top-up, filter &amp; coil cleaning</div>
       </a>
       <a href="/#services" class="err-link-card">
-        <span class="err-link-icon">🔌</span>
+        <span class="err-link-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9 2v6M15 2v6M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6z"/><path d="M12 17v5"/></svg></span>
         <div class="err-link-title">AC Installation</div>
         <div class="err-link-sub">Split, window, cassette, VRF — all brands</div>
       </a>
-      <a href="/#services" class="err-link-card">
-        <span class="err-link-icon">📋</span>
+      <a href="/calculator" class="err-link-card">
+        <span class="err-link-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 13l2 2 4-4"/></svg></span>
         <div class="err-link-title">AC AMC Plans</div>
         <div class="err-link-sub">Annual maintenance contracts — comprehensive &amp; basic</div>
       </a>
